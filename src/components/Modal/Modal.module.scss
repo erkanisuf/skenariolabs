@@ -1,0 +1,30 @@
+.container {
+  background: rgba(0, 0, 0, 0.699);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  .modalChildren {
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    button {
+      align-self: flex-end;
+      margin: 15px;
+      background: none;
+      border: none;
+      font-size: 35px;
+      cursor: pointer;
+      transition: 0.5s;
+      color: rgb(133, 11, 11);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { defaultPropertyValues } from "../../helpers/defaultVariables";
 import { IForm } from "../../types/formTypes";
 import { IProperty } from "../../types/propertyTypes";
+import Modal from "../Modal/Modal";
 
 const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
+  const [isModalOpen, setisModalOpen] = useState<boolean>(false); // Opens Modal
   //React-Hook-Form Setup
   const {
     register,
@@ -36,101 +38,114 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
   };
   return (
     <div>
-      <form
-        onSubmit={handleSubmit(FormSubmit)}
-        style={{ display: "flex", flexDirection: "column", width: "50%" }}
-      >
-        <label>Name of the building</label>
-        <input
-          defaultValue="name"
-          type="text"
-          {...register("name", {
-            required: "Name is missing!",
-            minLength: { value: 2, message: "Minimum of 2(chars)" },
-            maxLength: { value: 15, message: "Maximum of 15(chars)" },
-          })}
-        />
-        <p>{errors.name ? errors.name.message : ""}</p>
-        <label>Street</label>
-        <input
-          defaultValue="street"
-          type="text"
-          {...register("street", {
-            required: "Street is missing!",
-            minLength: { value: 2, message: "Minimum of 2(chars)" },
-            maxLength: { value: 30, message: "Maximum of 30(chars)" },
-          })}
-        />
-        <p>{errors.street ? errors.street.message : ""}</p>
-        <label>Street number</label>
-        <input
-          defaultValue="number"
-          type="text"
-          {...register("number", {
-            required: "Streetnumber is missing!",
-            minLength: { value: 1, message: "Minimum of 1(char)" },
-            maxLength: { value: 10, message: "Maximum of 10(chars)" },
-          })}
-        />
-        <p>{errors.number ? errors.number.message : ""}</p>
-        <label>Postalcode</label>
-        <input
-          defaultValue=""
-          type="text"
-          {...register("postalcode", {
-            required: "Postcode is missing!",
-            minLength: { value: 5, message: "Minimum of 5(char)" },
-            maxLength: { value: 10, message: "Maximum of 10(chars)" },
-          })}
-        />
-        <p>{errors.postalcode ? errors.postalcode.message : ""}</p>
-        <label>City</label>
-        <input
-          defaultValue="city"
-          type="text"
-          {...register("city", {
-            required: "City is missing!",
-            minLength: { value: 3, message: "Minimum of 4(char)" },
-            maxLength: { value: 10, message: "Maximum of 10(chars)" },
-          })}
-        />
-        <p>{errors.city ? errors.city.message : ""}</p>
-        <label>Municipality</label>
-        <input
-          defaultValue="municipality"
-          type="text"
-          {...register("municipality")}
-        />
+      <button onClick={() => setisModalOpen(true)}>
+        {type === "EDIT" ? "Edit" : "Add"}
+      </button>
+      <Modal isModalOpen={isModalOpen} closeModal={setisModalOpen}>
+        <form
+          onSubmit={handleSubmit(FormSubmit)}
+          style={{ display: "flex", flexDirection: "column", width: "50%" }}
+        >
+          <label>Name of the building</label>
+          <input
+            defaultValue="name"
+            type="text"
+            {...register("name", {
+              required: "Name is missing!",
+              minLength: { value: 2, message: "Minimum of 2(chars)" },
+              maxLength: { value: 15, message: "Maximum of 15(chars)" },
+            })}
+          />
+          <p>{errors.name ? errors.name.message : ""}</p>
+          <div>
+            <label>Street</label>
+            <input
+              defaultValue="street"
+              type="text"
+              {...register("street", {
+                required: "Street is missing!",
+                minLength: { value: 2, message: "Minimum of 2(chars)" },
+                maxLength: { value: 30, message: "Maximum of 30(chars)" },
+              })}
+            />
+            <p>{errors.street ? errors.street.message : ""}</p>
+            <label>Street number</label>
+            <input
+              defaultValue="number"
+              type="text"
+              {...register("number", {
+                required: "Streetnumber is missing!",
+                minLength: { value: 1, message: "Minimum of 1(char)" },
+                maxLength: { value: 10, message: "Maximum of 10(chars)" },
+              })}
+            />
+            <p>{errors.number ? errors.number.message : ""}</p>
+          </div>
+          <div>
+            <label>Postalcode</label>
+            <input
+              defaultValue=""
+              type="text"
+              {...register("postalcode", {
+                required: "Postcode is missing!",
+                minLength: { value: 5, message: "Minimum of 5(char)" },
+                maxLength: { value: 10, message: "Maximum of 10(chars)" },
+              })}
+            />
+            <p>{errors.postalcode ? errors.postalcode.message : ""}</p>
 
-        <label>Country</label>
-        <input
-          defaultValue="country"
-          type="text"
-          {...register("country", {
-            required: "Country is missing!",
-            minLength: { value: 3, message: "Minimum of 3(char)" },
-            maxLength: { value: 10, message: "Maximum of 10(chars)" },
-          })}
-        />
-        <p>{errors.country ? errors.country.message : ""}</p>
-        <label>Description</label>
-        <textarea
-          rows={10}
-          defaultValue="description"
-          {...register("description")}
-        />
+            <label>City</label>
+            <input
+              defaultValue="city"
+              type="text"
+              {...register("city", {
+                required: "City is missing!",
+                minLength: { value: 3, message: "Minimum of 4(char)" },
+                maxLength: { value: 10, message: "Maximum of 10(chars)" },
+              })}
+            />
+            <p>{errors.city ? errors.city.message : ""}</p>
+          </div>
+          <div>
+            <label>Municipality</label>
+            <input
+              defaultValue="municipality"
+              type="text"
+              {...register("municipality")}
+            />
 
-        <label>Coordinates</label>
-        <input
-          defaultValue="longitude"
-          type="hidden"
-          {...register("longitude", {
-            required: "longitude is missing!",
-            minLength: { value: 1, message: "Minimum of 1(char)" },
-          })}
-        />
-        <p>{errors.longitude ? errors.longitude.message : ""}</p>
-      </form>
+            <label>Country</label>
+            <input
+              defaultValue="country"
+              type="text"
+              {...register("country", {
+                required: "Country is missing!",
+                minLength: { value: 3, message: "Minimum of 3(char)" },
+                maxLength: { value: 10, message: "Maximum of 10(chars)" },
+              })}
+            />
+            <p>{errors.country ? errors.country.message : ""}</p>
+          </div>
+          <div>
+            <label>Description</label>
+            <textarea
+              rows={10}
+              defaultValue="description"
+              {...register("description")}
+            />
+          </div>
+          <label>Coordinates</label>
+          <input
+            defaultValue="longitude"
+            type="hidden"
+            {...register("longitude", {
+              required: "longitude is missing!",
+              minLength: { value: 1, message: "Minimum of 1(char)" },
+            })}
+          />
+          <p>{errors.longitude ? errors.longitude.message : ""}</p>
+        </form>
+      </Modal>
     </div>
   );
 };
