@@ -8,6 +8,7 @@ import { IProperty } from "./types/propertyTypes";
 
 function App() {
   const CreateNewProperty = (newproperty: IProperty) => {};
+  console.log(`${process.env.REACT_MAP_GL_KEY}`);
   return (
     <div className="App">
       <h1>Skenario Labs</h1>

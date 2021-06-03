@@ -66,7 +66,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
                 {...register("name", {
                   required: "Name is missing!",
                   minLength: { value: 2, message: "Minimum of 2(chars)" },
-                  maxLength: { value: 15, message: "Maximum of 15(chars)" },
+                  maxLength: { value: 80, message: "Maximum of 30(chars)" },
                 })}
               />
             </div>

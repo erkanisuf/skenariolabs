@@ -1,5 +1,7 @@
+import { ICordsMapViewCoordinates } from "../types/cordsMapViewTypes";
 import { IProperty } from "../types/propertyTypes";
 
+// for property object used
 export const defaultPropertyValues: IProperty = {
   id: "",
   name: "",
@@ -11,4 +13,39 @@ export const defaultPropertyValues: IProperty = {
   country: "",
   description: "",
   longitude: null,
+  latitude: null,
+};
+
+// default CordsMapView variable
+export const defaultViewPortCoordinates: ICordsMapViewCoordinates = {
+  latitude: 0,
+  longitude: 0,
+  zoom: 15,
+  bearing: 0,
+  pitch: 0,
+};
+
+// used by the CordsMapView component for the map view styling
+export const geolocateStyle = {
+  top: 0,
+  left: 0,
+  padding: "10px",
+};
+
+export const fullscreenControlStyle = {
+  top: 36,
+  left: 0,
+  padding: "10px",
+};
+
+export const navStyle = {
+  top: 72,
+  left: 0,
+  padding: "10px",
+};
+
+export const scaleControlStyle = {
+  bottom: 36,
+  left: 0,
+  padding: "10px",
 };
