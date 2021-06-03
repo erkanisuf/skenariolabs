@@ -6,8 +6,11 @@ import { IProperty } from "../../types/propertyTypes";
 import Modal from "../Modal/Modal";
 import FormCSS from "./Form.module.css";
 import { RiErrorWarningLine } from "react-icons/ri";
+import CoordinatesUI from "../CoordinatesUI/CoordinatesUI";
+import { IApiProperty } from "../../types/apiTypes";
 const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false); // Opens Modal
+  const [resetCoordinatUI, setResetCoordinatUI] = useState<boolean>(false); //Trigger to reset coordinates values of <CoorinatesUI />
   //React-Hook-Form Setup
   const {
     register,
@@ -36,6 +39,15 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
   const FormSubmit: SubmitHandler<IProperty> = (data) => {
     SubmitForm(data); // this will push to redux store or edit (passing prop)
     reset(); // resets the form after submiting
+    setResetCoordinatUI(!resetCoordinatUI); // resets the values of <CoordinatesUI />
+    setisModalOpen(false); // closes Modal
+  };
+
+  //set Coordinates values to the object that will be send to the redux store.
+  const SetCoordinates = (propertyCoords: IApiProperty) => {
+    setValue("longitude", propertyCoords.lon);
+    setValue("latitude", propertyCoords.lat);
+    clearErrors("longitude"); // clears form error if there is any
   };
   return (
     <div>
@@ -200,6 +212,12 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
             />
           </div>
           <label>Coordinates</label>
+          <CoordinatesUI
+            formValues={getValues}
+            setCordinates={SetCoordinates}
+            reset={resetCoordinatUI}
+            errors={errors}
+          />
           <input
             defaultValue="longitude"
             type="hidden"
