@@ -17,9 +17,20 @@ function App() {
   console.log(`${process.env.REACT_MAP_GL_KEY}`);
   return (
     <div className="App">
-      <h1>Skenario Labs</h1>
-      <Form type={"CREATE"} SubmitForm={CreateNewProperty} />
-      <ListProperties />
+      <header>
+        <img
+          src="https://www.skenariolabs.com/images/logo.png"
+          alt="logoskenariolabs"
+        />
+      </header>
+      <div className="bodyApp">
+        <div className="AddProperty">
+          <Form type={"CREATE"} SubmitForm={CreateNewProperty} />
+        </div>
+
+        <ListProperties />
+      </div>
+      <footer></footer>
     </div>
   );
 }

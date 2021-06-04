@@ -1,0 +1,25 @@
+.bodyApp {
+  min-height: 100vh;
+}
+header {
+  background-color: rgb(27, 27, 27);
+  min-height: 50px;
+  padding: 25px 0px;
+  color: white;
+  text-align: center;
+}
+header img {
+  width: 200px;
+}
+footer {
+  background-color: rgb(27, 27, 27);
+  min-height: 150px;
+}
+
+.AddProperty {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+}

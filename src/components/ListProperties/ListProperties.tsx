@@ -18,9 +18,16 @@ const ListProperties = () => {
   const updateProperty = (property: IProperty) => {
     dispatch(editProperty(property));
   };
+  if (!properties.length) {
+    return (
+      <h2 style={{ textAlign: "center", marginTop: "150px", color: "grey" }}>
+        No properties in store yet!
+      </h2>
+    );
+  }
   return (
     <div className={ListPropertiesCSS.container}>
-      <table style={{ width: "100%" }}>
+      <table>
         <thead>
           <tr>
             <th>Property name</th>
