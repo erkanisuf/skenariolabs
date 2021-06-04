@@ -1,3 +1,4 @@
+import { IAPIResponse } from "../types/apiTypes";
 import { ICordsMapViewCoordinates } from "../types/cordsMapViewTypes";
 import { IProperty } from "../types/propertyTypes";
 
@@ -15,6 +16,13 @@ export const defaultPropertyValues: IProperty = {
   longitude: null,
   latitude: null,
 };
+
+//for the Map Component because its required to these params
+export const defaultIApiResponsevalues: IAPIResponse[] = [
+  {
+    properties: { lat: 0, lon: 0, formatted: "" },
+  },
+];
 
 // default CordsMapView variable
 export const defaultViewPortCoordinates: ICordsMapViewCoordinates = {

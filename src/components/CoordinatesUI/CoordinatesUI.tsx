@@ -72,11 +72,6 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
   return (
     <Spinner loading={loading} error={error} refreshButton={<RefreshButton />}>
       <div className={CoordinatesUICSS.container}>
-        {/* {foundCoordinates.length > 0 ? (
-          <p>You searched for: {searchFor}</p>
-        ) : (
-          ""
-        )} */}
         <div>
           <span> {searchFor}</span>
           {foundCoordinates.map((el, index) => {
@@ -112,7 +107,6 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
             className={CoordinatesUICSS.getButton}
             type="button"
             onClick={GetCoordinates}
-            // disabled={Object.keys(errors).length > 0}
           >
             <BiCurrentLocation /> Get coordinates
           </button>
@@ -121,11 +115,6 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
             <AiOutlineFileAdd />{" "}
             {formType === "EDIT" ? "Save Changes" : "Submit"}
           </button>
-          {/* <input
-            type="submit"
-            value={`${(<AiOutlineFileAdd />)}Submit`}
-            // disabled={Object.keys(errors).length > 0} // In case want to use disabled option
-          /> */}
         </div>
       </div>
     </Spinner>

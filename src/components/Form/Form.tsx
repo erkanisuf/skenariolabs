@@ -51,6 +51,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
     setValue("longitude", propertyCoords.lon);
     setValue("latitude", propertyCoords.lat);
     clearErrors("longitude"); // clears form error if there is any
+    clearErrors("latitude"); // clears form error if there is any
   };
 
   return (

@@ -38,3 +38,19 @@
     background-color: rgb(104, 6, 19);
   }
 }
+
+.infoBtn {
+  background-color: rgb(99, 12, 170);
+  font-size: 12px;
+
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 75px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(69, 9, 119);
+  }
+}
