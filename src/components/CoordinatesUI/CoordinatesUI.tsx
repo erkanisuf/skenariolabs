@@ -29,8 +29,10 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
     formatted: "",
   });
 
+  //Resets the Component after submitting
   useEffect(() => {
     setFoundCoordinates([]);
+    setRadiobutton("");
   }, [reset]);
 
   const SetCoordinatesAndViewPort = (e: any, coordinates: IApiProperty) => {

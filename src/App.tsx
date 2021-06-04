@@ -14,9 +14,7 @@ function App() {
     const propertyToStore = { ...newproperty, id: uuidv4() };
     dispatch(addProperty(propertyToStore));
   };
-  const obi = { name: "q" };
-  const kur = new Array(obi);
-  console.log(kur);
+
   return (
     <div className="App">
       <header>

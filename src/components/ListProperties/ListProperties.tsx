@@ -14,24 +14,36 @@ import ConfirmWindow from "../ConfirmWIndow/ConfirmWindow";
 import Modal from "../Modal/Modal";
 import CordsMapView from "../CordsMapView.tsx/CordsMapView";
 import { IAPIResponse } from "../../types/apiTypes";
-import { defaultIApiResponsevalues } from "../../helpers/defaultVariables";
+import {
+  defaultIApiResponsevalues,
+  defaultPropertyValues,
+} from "../../helpers/defaultVariables";
 const ListProperties = () => {
   const { properties } = useAppSelector((state) => state.propertiesREDUCER);
   const dispatch = useAppDispatch();
   const [confirmWindow, setconfirmWindow] = useState<boolean>(false); // opens confirm window to delete option
   const [isModalOpen, setisModalOpen] = useState<boolean>(false); // Opens Modal with the map and description
+  const [property, setProperty] = useState<IProperty>(defaultPropertyValues);
   const [cordsToMap, setCordsToMap] = useState<IAPIResponse[]>(
     defaultIApiResponsevalues
   );
 
   const deleteProperty = (property: IProperty) => {
     dispatch(removeProperty(property));
+    setconfirmWindow(false);
   };
   const updateProperty = (property: IProperty) => {
     dispatch(editProperty(property));
   };
+  //Deletion confirmation
+
+  const OpenConfirmWindow = (property: IProperty) => {
+    setProperty(property);
+    setconfirmWindow(true);
+  };
   // Opens Modal with description and Map with coordinates
   const OpenInfo = (property: IProperty) => {
+    setProperty(property);
     const coordinates: IAPIResponse = {
       properties: {
         lat: property.latitude ? property.latitude : 0,
@@ -83,16 +95,11 @@ const ListProperties = () => {
                 <td>
                   <button
                     className={ListPropertiesCSS.delBtn}
-                    onClick={() => setconfirmWindow(true)}
+                    onClick={() => OpenConfirmWindow(el)}
                   >
                     <MdDelete /> Delete
                   </button>
-                  <ConfirmWindow
-                    submitConfirm={() => deleteProperty(el)}
-                    open={confirmWindow}
-                    setClose={() => setconfirmWindow(false)}
-                    children={el.name}
-                  />
+
                   <Form
                     type="EDIT"
                     SubmitForm={updateProperty}
@@ -105,22 +112,28 @@ const ListProperties = () => {
                     <FaMapMarkerAlt />
                     Info
                   </button>
-                  <Modal isModalOpen={isModalOpen} closeModal={setisModalOpen}>
-                    <p>{el.name}</p>
-                    <CordsMapView
-                      open={true}
-                      coordinates={cordsToMap}
-                      focusViewport={cordsToMap[0].properties}
-                    />
-                    <p>Description:</p>
-                    {el.description}
-                  </Modal>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <ConfirmWindow
+        submitConfirm={() => deleteProperty(property)}
+        open={confirmWindow}
+        setClose={() => setconfirmWindow(false)}
+        children={property.name}
+      />
+      <Modal isModalOpen={isModalOpen} closeModal={setisModalOpen}>
+        <p style={{ textAlign: "center" }}>{property.name}</p>
+        <CordsMapView
+          open={true}
+          coordinates={cordsToMap}
+          focusViewport={cordsToMap[0].properties}
+        />
+        <p style={{ textAlign: "center" }}>Description:</p>
+        <p style={{ textAlign: "center" }}>{property.description}</p>
+      </Modal>
     </div>
   );
 };
