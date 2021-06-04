@@ -8,6 +8,7 @@ import { IProperty } from "../../types/propertyTypes";
 import Form from "../Form/Form";
 import { v4 as uuidv4 } from "uuid";
 import ListPropertiesCSS from "./ListProperties.module.css";
+import { MdDelete } from "react-icons/md";
 const ListProperties = () => {
   const { properties } = useAppSelector((state) => state.propertiesREDUCER);
   const dispatch = useAppDispatch();
@@ -22,8 +23,12 @@ const ListProperties = () => {
       <table style={{ width: "100%" }}>
         <thead>
           <tr>
-            <th>id</th>
             <th>Property name</th>
+            <th>City</th>
+            <th>Postalcode</th>
+            <th>Country</th>
+            <th>Street</th>
+            <th>Str. number</th>
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Actions</th>
@@ -33,8 +38,12 @@ const ListProperties = () => {
           {properties.map((el: IProperty, index: number) => {
             return (
               <tr key={uuidv4()}>
-                <td>{el.id}</td>
                 <td>{el.name}</td>
+                <td>{el.city}</td>
+                <td>{el.postalcode}</td>
+                <td>{el.country}</td>
+                <td>{el.street}</td>
+                <td>{el.number}</td>
                 <td>{el.latitude}</td>
                 <td>{el.longitude}</td>
                 <td>
@@ -42,7 +51,7 @@ const ListProperties = () => {
                     className={ListPropertiesCSS.delBtn}
                     onClick={() => deleteProperty(el)}
                   >
-                    Delete
+                    <MdDelete /> Delete
                   </button>
                   <Form
                     type="EDIT"
