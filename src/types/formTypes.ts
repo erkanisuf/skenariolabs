@@ -4,4 +4,4 @@ export interface IForm {
   propertyToEdit?: any;
   SubmitForm: any;
 }
-type formType = "CREATE" | "EDIT"; // form can be used for creating and editing.
+export type formType = "CREATE" | "EDIT"; // form can be used for creating and editing.

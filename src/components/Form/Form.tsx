@@ -8,6 +8,7 @@ import FormCSS from "./Form.module.css";
 import { RiErrorWarningLine } from "react-icons/ri";
 import CoordinatesUI from "../CoordinatesUI/CoordinatesUI";
 import { IApiProperty } from "../../types/apiTypes";
+import { AiFillEdit, AiFillPlusSquare } from "react-icons/ai";
 const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
   const [isModalOpen, setisModalOpen] = useState<boolean>(false); // Opens Modal
   const [resetCoordinatUI, setResetCoordinatUI] = useState<boolean>(false); //Trigger to reset coordinates values of <CoorinatesUI />
@@ -54,8 +55,21 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
 
   return (
     <div>
-      <button onClick={() => setisModalOpen(true)}>
-        {type === "EDIT" ? "Edit" : "Add"}
+      <button
+        className={type === "EDIT" ? FormCSS.editBtn : FormCSS.addBtn}
+        onClick={() => setisModalOpen(true)}
+      >
+        {type === "EDIT" ? (
+          <>
+            <AiFillEdit />
+            Edit
+          </>
+        ) : (
+          <>
+            <AiFillPlusSquare />
+            New property
+          </>
+        )}
       </button>
       <Modal isModalOpen={isModalOpen} closeModal={setisModalOpen}>
         <form className={FormCSS.container} onSubmit={handleSubmit(FormSubmit)}>
@@ -242,6 +256,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
               setCordinates={SetCoordinates}
               reset={resetCoordinatUI}
               errors={errors}
+              formType={type}
             />
           </div>
         </form>

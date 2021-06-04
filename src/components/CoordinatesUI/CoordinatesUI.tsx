@@ -14,6 +14,7 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
   setCordinates,
   reset,
   errors,
+  formType,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
@@ -100,6 +101,13 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
           focusViewport={viewPort}
         />
         <div className={CoordinatesUICSS.buttonsWrapper}>
+          {formType === "EDIT" ? (
+            <span>
+              {formValues("latitude")} , {formValues("longitude")}
+            </span>
+          ) : (
+            ""
+          )}
           <button
             className={CoordinatesUICSS.getButton}
             type="button"
@@ -108,9 +116,10 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
           >
             <BiCurrentLocation /> Get coordinates
           </button>
-          <button type="submit">
+          <button type="submit" onClick={() => setSearchFor("")}>
             {" "}
-            <AiOutlineFileAdd /> Submit
+            <AiOutlineFileAdd />{" "}
+            {formType === "EDIT" ? "Save Changes" : "Submit"}
           </button>
           {/* <input
             type="submit"
