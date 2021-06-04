@@ -58,17 +58,16 @@ const CordsMapView: React.FC<ICordsMapView> = ({
               <Marker
                 longitude={el.properties.lon}
                 latitude={el.properties.lat}
-              >
-                <h1>Here</h1>{" "}
-              </Marker>
+              ></Marker>
               <Popup
-                tipSize={5}
+                tipSize={12}
                 anchor="top"
                 longitude={el.properties.lon}
                 latitude={el.properties.lat}
-                closeOnClick={true}
+                closeOnClick={false}
+                closeButton={false}
               >
-                {el.properties.formatted}
+                <p style={{ fontSize: "12px" }}>{el.properties.formatted}</p>
               </Popup>
             </div>
           );

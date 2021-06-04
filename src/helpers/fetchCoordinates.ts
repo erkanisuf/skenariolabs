@@ -12,7 +12,7 @@ export const fetchData = (
   setLoading(true);
   const search = formValues();
   let searchQuery: string = `${search.name} ${search.street} ${search.number} ${search.city} ${search.postalcode} ${search.country} ${search.municipality}`;
-  setSearchFor(searchQuery);
+  setSearchFor(`You searched for: ${searchQuery}`);
   var encodedSearch = encodeURIComponent(searchQuery); // encodes the string the the URL otherwise doesnt read it.
   let requestOptions = {
     method: "GET",
@@ -23,16 +23,24 @@ export const fetchData = (
   )
     .then((response) => response.json())
     .then((result) => {
-      setLoading(false);
-      const propertyCoordinates: IAPIResponse[] = result.features;
-      setFoundCoordinates(propertyCoordinates);
-      if (propertyCoordinates.length > 0) {
-        setViewPort({
-          lat: propertyCoordinates[0].properties.lat,
-          lon: propertyCoordinates[0].properties.lon,
-          formatted: "",
-        });
-        setOpenMap(true);
+      console.log(result);
+      if (result.statusCode !== 400) {
+        setLoading(false);
+        setError(false);
+        const propertyCoordinates: IAPIResponse[] = result.features;
+        setFoundCoordinates(propertyCoordinates);
+        if (propertyCoordinates.length > 0) {
+          setViewPort({
+            lat: propertyCoordinates[0].properties.lat,
+            lon: propertyCoordinates[0].properties.lon,
+            formatted: "",
+          });
+          setOpenMap(true);
+        } else {
+          setSearchFor(`Couldnt find anything of : ${searchQuery}`);
+        }
+      } else {
+        setError(true);
       }
     })
     .catch((error) => {

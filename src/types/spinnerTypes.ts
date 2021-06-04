@@ -4,4 +4,5 @@ export interface ISpinner {
   loading: boolean;
   error: boolean;
   children: ReactNode;
+  refreshButton?: ReactNode;
 }

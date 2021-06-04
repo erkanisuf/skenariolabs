@@ -5,6 +5,10 @@ import { ICoordinatesUI } from "../../types/coordinatesUITypes";
 import CordsMapView from "../CordsMapView.tsx/CordsMapView";
 import { v4 as uuidv4 } from "uuid";
 import Spinner from "../Spinner/Spinner";
+import { RiRefreshFill } from "react-icons/ri";
+import { BiCurrentLocation } from "react-icons/bi";
+import { AiOutlineFileAdd } from "react-icons/ai";
+import CoordinatesUICSS from "./CoordinatesUI.module.css";
 const CoordinatesUI: React.FC<ICoordinatesUI> = ({
   formValues,
   setCordinates,
@@ -13,6 +17,7 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [radiobutton, setRadiobutton] = useState<string>("");
   const [searchFor, setSearchFor] = useState<string>(""); //shows to the UI the searching query
   const [foundCoordinates, setFoundCoordinates] = useState<IAPIResponse[]>([]); // coordinates results of the api
   const [isMapOpen, setOpenMap] = useState<boolean>(false); // Opens the CordsMapView Component
@@ -27,7 +32,8 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
     setFoundCoordinates([]);
   }, [reset]);
 
-  const SetCoordinatesAndViewPort = (coordinates: IApiProperty) => {
+  const SetCoordinatesAndViewPort = (e: any, coordinates: IApiProperty) => {
+    setRadiobutton(e.target.value);
     setViewPort(coordinates);
     setCordinates(coordinates);
   };
@@ -50,43 +56,68 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
     inputvalues.description = inputvalues.name; // This is pretty much to exclude this property , its not needed for the search query. And if only this field is filled it causes error.
     return Object.values(inputvalues).some((val) => val);
   };
-  console.log(isAnySearchValue());
 
+  //refresh function with button if error happens
+  const RefreshFetchRequest = () => {
+    GetCoordinates();
+  };
+  const RefreshButton = () => {
+    return (
+      <button onClick={RefreshFetchRequest}>
+        <RiRefreshFill />
+      </button>
+    );
+  };
   return (
-    <Spinner loading={loading} error={error}>
-      <div style={{ backgroundColor: "green", minHeight: "500px" }}>
-        <p>Searching for: {searchFor}</p>
-        <button
-          type="button"
-          onClick={GetCoordinates}
-          disabled={Object.keys(errors).length > 0}
-        >
-          Proceed to get Coordinates
-        </button>
-        {foundCoordinates.map((el, index) => {
-          return (
-            <div key={index}>
-              <input
-                type="radio"
-                name="selectedcoordinate"
-                key={uuidv4()}
-                onChange={() => SetCoordinatesAndViewPort(el.properties)}
-              />
-              {el.properties.formatted},{el.properties.district},(
-              {el.properties.lat},{el.properties.lon})
-            </div>
-          );
-        })}
+    <Spinner loading={loading} error={error} refreshButton={<RefreshButton />}>
+      <div className={CoordinatesUICSS.container}>
+        {/* {foundCoordinates.length > 0 ? (
+          <p>You searched for: {searchFor}</p>
+        ) : (
+          ""
+        )} */}
+        <div>
+          <span> {searchFor}</span>
+          {foundCoordinates.map((el, index) => {
+            return (
+              <div key={uuidv4()} className={CoordinatesUICSS.radioWrapper}>
+                <input
+                  value={el.properties.formatted}
+                  checked={el.properties.formatted === radiobutton}
+                  type="radio"
+                  name="selectedcoordinate"
+                  onChange={(e) => SetCoordinatesAndViewPort(e, el.properties)}
+                />
+                {el.properties.formatted},{el.properties.district},(
+                {el.properties.lat},{el.properties.lon})
+              </div>
+            );
+          })}
+        </div>
         <CordsMapView
           coordinates={foundCoordinates}
           open={isMapOpen}
           focusViewport={viewPort}
         />
-        <input
-          type="submit"
-          value="submit"
-          disabled={Object.keys(errors).length > 0}
-        />
+        <div className={CoordinatesUICSS.buttonsWrapper}>
+          <button
+            className={CoordinatesUICSS.getButton}
+            type="button"
+            onClick={GetCoordinates}
+            // disabled={Object.keys(errors).length > 0}
+          >
+            <BiCurrentLocation /> Get coordinates
+          </button>
+          <button type="submit">
+            {" "}
+            <AiOutlineFileAdd /> Submit
+          </button>
+          {/* <input
+            type="submit"
+            value={`${(<AiOutlineFileAdd />)}Submit`}
+            // disabled={Object.keys(errors).length > 0} // In case want to use disabled option
+          /> */}
+        </div>
       </div>
     </Spinner>
   );

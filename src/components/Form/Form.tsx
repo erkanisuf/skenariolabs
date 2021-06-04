@@ -19,6 +19,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
     reset,
     getValues,
     clearErrors,
+    setFocus,
     formState: { errors },
   } = useForm<IProperty | any>({
     mode: "all",
@@ -29,12 +30,13 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
   // SetValue accepts field name and value, it works only for single field thats why i loop the keys and values of the editing object.
   // If the form is in mode to edit property , it changes the default values of the input with propertie`s values.
   useEffect(() => {
+    setFocus("name");
     if (type === "EDIT") {
       for (const [key, value] of Object.entries(propertyToEdit)) {
         setValue(key, value);
       }
     }
-  }, [type, propertyToEdit, setValue]);
+  }, [type, propertyToEdit, setValue, setFocus, isModalOpen]);
 
   const FormSubmit: SubmitHandler<IProperty> = (data) => {
     SubmitForm(data); // this will push to redux store or edit (passing prop)
@@ -49,6 +51,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
     setValue("latitude", propertyCoords.lat);
     clearErrors("longitude"); // clears form error if there is any
   };
+
   return (
     <div>
       <button onClick={() => setisModalOpen(true)}>
@@ -66,7 +69,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
                 {...register("name", {
                   required: "Name is missing!",
                   minLength: { value: 2, message: "Minimum of 2(chars)" },
-                  maxLength: { value: 80, message: "Maximum of 30(chars)" },
+                  maxLength: { value: 150, message: "Maximum of 150(chars)" },
                 })}
               />
             </div>
@@ -91,7 +94,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
                 {...register("street", {
                   required: "Street is missing!",
                   minLength: { value: 2, message: "Minimum of 2(chars)" },
-                  maxLength: { value: 30, message: "Maximum of 30(chars)" },
+                  maxLength: { value: 100, message: "Maximum of 100(chars)" },
                 })}
               />
 
@@ -211,22 +214,36 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
               {...register("description")}
             />
           </div>
-          <label>Coordinates</label>
-          <CoordinatesUI
-            formValues={getValues}
-            setCordinates={SetCoordinates}
-            reset={resetCoordinatUI}
-            errors={errors}
-          />
-          <input
-            defaultValue="longitude"
-            type="hidden"
-            {...register("longitude", {
-              required: "longitude is missing!",
-              minLength: { value: 1, message: "Minimum of 1(char)" },
-            })}
-          />
-          {errors.longitude ? <p> {errors.longitude.message}</p> : ""}
+          <div className={FormCSS.inputContainer}>
+            <label>Coordinates</label>
+            <input
+              defaultValue="longitude"
+              type="hidden"
+              {...register("longitude", {
+                required: "longitude is missing!",
+                minLength: { value: 1, message: "Minimum of 1(char)" },
+              })}
+            />
+            <input
+              defaultValue="latitude"
+              type="hidden"
+              {...register("latitude", {
+                required: "latitude is missing!",
+                minLength: { value: 1, message: "Minimum of 1(char)" },
+              })}
+            />
+            <div className={FormCSS.errorWrapper}>
+              {errors.longitude ? <p> {errors.longitude.message}</p> : ""}
+              {errors.latitude ? <p> {errors.latitude.message}</p> : ""}
+            </div>
+
+            <CoordinatesUI
+              formValues={getValues}
+              setCordinates={SetCoordinates}
+              reset={resetCoordinatUI}
+              errors={errors}
+            />
+          </div>
         </form>
       </Modal>
     </div>
