@@ -57,6 +57,7 @@ const Form: React.FC<IForm> = ({ type, propertyToEdit, SubmitForm }) => {
   return (
     <div>
       <button
+        data-testid={type === "EDIT" ? "editBtn" : "addBtn"}
         className={type === "EDIT" ? FormCSS.editBtn : FormCSS.addBtn}
         onClick={() => setisModalOpen(true)}
       >
