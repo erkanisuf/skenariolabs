@@ -41,11 +41,11 @@ const CordsMapView: React.FC<ICordsMapView> = ({
     return <></>;
   }
   return (
-    <div style={{ height: "300px" }}>
+    <div id="map" style={{ height: "300px" }}>
       <MapGL
         mapboxApiAccessToken={`pk.eyJ1IjoiZXJrYW5pc3VmIiwiYSI6ImNrcGZxaHRmNjI0N3UycmxsbWg1Zmt0YXQifQ.tbQo15ubXKR028W_UT5Ibw`} //Key is public for the assingment but usually should be in .env
         {...viewport}
-        mapStyle="mapbox://styles/mapbox/dark-v9"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
         width="100%"
         height="100%"
         scrollZoom={true}
