@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.2",
     "@cypress/code-coverage": "^3.9.6",
     "@cypress/instrument-cra": "^1.4.0",
     "@reduxjs/toolkit": "^1.5.1",
@@ -51,7 +52,7 @@
       "not dead",
       "not ie 11",
       "not chrome < 51",
-      " not safari < 10",
+      "not safari < 10",
       "not op_mini all"
     ],
     "development": [
