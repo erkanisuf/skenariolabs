@@ -1,0 +1,144 @@
+commit 26c4d0b5b154d5d464e13f2a89b9804feb259902
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 20:37:06 2021 +0300
+
+    bugfixofProduction
+
+commit 0c58dccfc658af3bc48501cc6ac7542117f93a70
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:53:12 2021 +0300
+
+    production
+
+commit 8def1f9e85de2a82ca49781aeff37d487dcae243
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:47:34 2021 +0300
+
+    fixesProduction
+
+commit 51cfc06d354120f2e123d178d38d7c3530ebab72
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:42:27 2021 +0300
+
+    changes in package.json
+
+commit 0429e4d0032b5d21c76fa4b579cd14459d25eee4
+Merge: ca72eae da339ae
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:37:35 2021 +0300
+
+    Merge branch 'master' of https://github.com/erkanisuf/skenariolabsNOTREADY
+
+commit ca72eaed3609c3554a90b4865ba6c152ee5f5ba1
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:36:04 2021 +0300
+
+    mapcss
+
+commit da339ae57f038f87212210ac462fd29559b2fefb
+Author: Erkan Isuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:27:25 2021 +0300
+
+    Update README.md
+
+commit c5d276ecdd500694efc4d7259381d411c91c5f13
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 19:23:56 2021 +0300
+
+    Ready to Deploy
+
+commit a134ee47109b72b11ffe21b7e97fd7350fe5788a
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Sat Jun 5 18:57:33 2021 +0300
+
+    cypress setup fixes , datatesti-id added to btns , wrote tests
+
+commit 71500a96d3703fee954e21fd6b2059f6e36fbeba
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 23:13:16 2021 +0300
+
+    cypress setup
+
+commit 974a35812e102061c115ff775373f52008ddd3e7
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 22:00:49 2021 +0300
+
+    Fixed bug with ConfirmationWindow
+
+commit 5a56b245e936e5c04d5bfef019204d9a9ac4a572
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 21:50:36 2021 +0300
+
+    Changes in ListProperties , added Info Button
+
+commit feacfd9ae9c77e0453c21175efab7d6ac931ed3c
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 20:54:38 2021 +0300
+
+    styling frontpage and style to ListProperties
+
+commit c5c25732f8ec4436ec0ec47648e952341775cf9d
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 20:45:20 2021 +0300
+
+    styling of Table (ListProperties)
+
+commit 812b1419c0f407bf99aaec408b6aebf1ec0a101a
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 09:21:16 2021 +0300
+
+    ListProperties added with some stylin g(need more styling)
+
+commit fbc16bf6ec1f853f27596a9203f901c574261c63
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Fri Jun 4 08:45:25 2021 +0300
+
+    Styling and function update changes in CoordinatesUI , CoordinatesMapview and Modal and the Spinner
+
+commit afff313c791cbb319a484a1c170674eb9fb4cfaf
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 23:06:24 2021 +0300
+
+    Added Spinner component and minor changes in CordsMapView
+
+commit 12109cc22c1e4a6e807d065c5c68a510cf29913b
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 21:55:00 2021 +0300
+
+    Added component Coordinates UI(later will do styling) , apiTypes values, coordinatesUiTypes,fetchCoordinayes helper
+
+commit 7583b3f49e0d3436172dd78b1cd44045830bc30f
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 21:37:20 2021 +0300
+
+    Styling to Form component ( migh need changes later)
+
+commit 6c6e6507aadd003e8be9a2f46c7acea07d8c00c5
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 21:06:42 2021 +0300
+
+    Added Modal Component(styling migh need changes later)
+
+commit 1111c9d3b5258869584132208eca32f945d0a9a9
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 20:42:43 2021 +0300
+
+    Added Form Component (missing styling for now)
+
+commit 3ca859f4e610c7417296b089fc0042979e39907e
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 20:33:34 2021 +0300
+
+    Added setup of Redux and Types of properties
+
+commit f76bf176c2978958cfef3a4da5f20e47dcedfee6
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 20:25:28 2021 +0300
+
+    Starting project SkenarioLabs
+
+commit 067d3e47118fb157a61af3c233cf1dbb68c74b5c
+Author: erkanisuf <63913743+erkanisuf@users.noreply.github.com>
+Date:   Thu Jun 3 09:50:18 2021 +0300
+
+    Initialize project using Create React App
