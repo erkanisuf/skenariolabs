@@ -46,7 +46,7 @@ npm start  - to run the application
 
 ## Commits
 
-List of commits can be found in gitlogs.txt
+List of commits can be found in logs.txt
 
 ## Issues
 
