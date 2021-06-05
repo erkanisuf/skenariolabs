@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import MapGL, {
   Popup,
   Marker,
@@ -7,6 +8,7 @@ import MapGL, {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
+
 import {
   defaultViewPortCoordinates,
   fullscreenControlStyle,
@@ -18,7 +20,13 @@ import {
   ICordsMapView,
   ICordsMapViewCoordinates,
 } from "../../types/cordsMapViewTypes";
+import mapboxgl from "mapbox-gl";
+/* eslint import/no-webpack-loader-syntax: off */
+// @ts-ignore
 
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+mapboxgl.workerClass =
+  require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 const CordsMapView: React.FC<ICordsMapView> = ({
   coordinates,
   open,
