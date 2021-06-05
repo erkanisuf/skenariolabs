@@ -94,6 +94,7 @@ const ListProperties = () => {
                 <td>{el.longitude}</td>
                 <td>
                   <button
+                    data-testid="delBtn"
                     className={ListPropertiesCSS.delBtn}
                     onClick={() => OpenConfirmWindow(el)}
                   >
@@ -106,6 +107,7 @@ const ListProperties = () => {
                     propertyToEdit={el}
                   />
                   <button
+                    data-testid="infoBtn"
                     className={ListPropertiesCSS.infoBtn}
                     onClick={() => OpenInfo(el)}
                   >

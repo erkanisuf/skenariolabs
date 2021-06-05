@@ -9,7 +9,11 @@ const Modal: React.FC<IImodal> = ({ children, isModalOpen, closeModal }) => {
       style={{ display: isModalOpen ? "flex" : "none" }}
     >
       <div className={ModalCSS.modalChildren}>
-        <button type="button" onClick={() => closeModal(false)}>
+        <button
+          data-testid="closeModalBtn"
+          type="button"
+          onClick={() => closeModal(false)}
+        >
           <AiFillCloseCircle />
         </button>
         {children}

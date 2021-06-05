@@ -15,7 +15,9 @@ const ConfirmWindow: React.FC<IConfirmWindow> = ({
       <div className={ConfirmWindowCSS.windowChildren}>
         <div>Are you sure you want to delete: {children}</div>
         <div className={ConfirmWindowCSS.btnContainer}>
-          <button onClick={submitConfirm}>Confirm</button>
+          <button data-testid="confirmBtn" onClick={submitConfirm}>
+            Confirm
+          </button>
           <button onClick={setClose}>Cancel</button>
         </div>
       </div>

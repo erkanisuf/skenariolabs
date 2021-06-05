@@ -106,13 +106,18 @@ const CoordinatesUI: React.FC<ICoordinatesUI> = ({
             ""
           )}
           <button
+            data-testid="getcordsBtn"
             className={CoordinatesUICSS.getButton}
             type="button"
             onClick={GetCoordinates}
           >
             <BiCurrentLocation /> Get coordinates
           </button>
-          <button type="submit" onClick={() => setSearchFor("")}>
+          <button
+            type="submit"
+            onClick={() => setSearchFor("")}
+            data-testid="submitBtn"
+          >
             {" "}
             <AiOutlineFileAdd />{" "}
             {formType === "EDIT" ? "Save Changes" : "Submit"}
