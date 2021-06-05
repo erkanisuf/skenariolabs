@@ -2,7 +2,7 @@
 
 Frontend assignment
 
-[LIVE Demo]()
+[LIVE Demo](https://erkanskenariolabs.netlify.app)
 
 ## Description
 
@@ -11,11 +11,14 @@ Task from interview in SkenarioLabs
 ### Tech used
 
 - Frontend
+  - Typescript
   - React
   - Redux
   - react-map-gl
 - Backend(API)
   - https://www.geoapify.com/geocoding-api
+- Tests
+  - Cypress
 - Deployment
   - Netlify Free Tier
 
