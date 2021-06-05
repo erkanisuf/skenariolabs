@@ -26,7 +26,7 @@ const CordsMapView: React.FC<ICordsMapView> = ({
 }) => {
   const [viewport, setViewport] = useState<ICordsMapViewCoordinates>(
     defaultViewPortCoordinates
-  );
+  ); // focuses the center of map to the coordinates
 
   useEffect(() => {
     setViewport({
@@ -43,7 +43,7 @@ const CordsMapView: React.FC<ICordsMapView> = ({
   return (
     <div style={{ height: "300px" }}>
       <MapGL
-        mapboxApiAccessToken={`pk.eyJ1IjoiZXJrYW5pc3VmIiwiYSI6ImNrcGZxaHRmNjI0N3UycmxsbWg1Zmt0YXQifQ.tbQo15ubXKR028W_UT5Ibw`}
+        mapboxApiAccessToken={`pk.eyJ1IjoiZXJrYW5pc3VmIiwiYSI6ImNrcGZxaHRmNjI0N3UycmxsbWg1Zmt0YXQifQ.tbQo15ubXKR028W_UT5Ibw`} //Key is public for the assingment but usually should be in .env
         {...viewport}
         mapStyle="mapbox://styles/mapbox/dark-v9"
         width="100%"

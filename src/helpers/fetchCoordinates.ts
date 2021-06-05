@@ -17,13 +17,13 @@ export const fetchData = (
   let requestOptions = {
     method: "GET",
   };
+  //Key is public for the assingment but usually should be in .env
   fetch(
     `https://api.geoapify.com/v1/geocode/search?text=${encodedSearch}&apiKey=9bf6b2731ab046f086f8125b49c9e684`,
     requestOptions
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
       if (result.statusCode !== 400) {
         setLoading(false);
         setError(false);
