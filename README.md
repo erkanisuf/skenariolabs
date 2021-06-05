@@ -50,8 +50,8 @@ List of commits can be found in gitlogs.txt
 
 ## Issues
 
--react maps gl in my Chrome browser caused some console.log errors because it was in conflict with some Chrome extentions.Issue is fixed now , if you have same trouble , make sure update Chrome or remove some extentions that are not maintained.
--react mapbox is working fine in development but in production seems like it had some issues , map wasnot showing , after some searching the solution was found here:
+- react maps gl in my Chrome browser caused some console.log errors because it was in conflict with some Chrome extentions.Issue is fixed now , if you have same trouble , make sure update Chrome or remove some extentions that are not maintained.
+- react mapbox is working fine in development but in production seems like it had some issues , map wasnot showing , after some searching the solution was found here:
 https://github.com/mapbox/mapbox-gl-js/issues/10173 , required also some eslint ignores.
 
 ## Author
